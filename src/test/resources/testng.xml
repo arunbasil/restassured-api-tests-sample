@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="restAssured-gradleTestSuite">
+    <test thread-count="1" name="Demo">
+        <classes>
+            <class name="org.azn.ApiTest"/> <!-- test case class-->
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

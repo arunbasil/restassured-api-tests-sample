@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+}
+
+group 'org.bnz'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // REST Assured
+    testImplementation 'io.rest-assured:rest-assured:5.2.0'
+
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+
+    // Hamcrest
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+
+    // Apache Commons CSV
+    implementation 'org.apache.commons:commons-csv:1.8'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+    // Oracle JDBC Driver
+    implementation 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
+
+    // WireMock
+    testImplementation 'com.github.tomakehurst:wiremock-jre8:2.33.2'
+    testImplementation 'io.rest-assured:rest-assured:5.3.1' // add rest-assured dependency
+    testImplementation 'org.testng:testng:7.8.0' // add testng testing framework dependency
+    implementation 'org.uncommons:reportng:1.1.4' // add testng reportng dependency
+    implementation 'org.slf4j:slf4j-api:2.0.9' // add slf4j dependency for test logging
+    implementation 'org.slf4j:slf4j-simple:2.0.9' // add slf4j dependency for test logging
+    implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
+}
+
+test {
+    reports.html.required = false // set gradle html report to false
+    reports.junitXml.required = false // set gradle junitXml report to false
+    // use testng testing framework
+    useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/resources/testng.xml' // set testng.xml file path
+    }
+    testLogging.showStandardStreams = true // output test log to console
+    testLogging.events "passed", "skipped", "failed" // deny output test log to console
+}
