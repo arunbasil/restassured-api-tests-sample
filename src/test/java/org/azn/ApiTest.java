@@ -11,7 +11,7 @@ public class ApiTest extends BaseTest {
     public void testVerifyAPISuccess() {
         Response response = given()
                 .queryParam("account_number", "12345678")
-                .queryParam("payee_name", "John Smith")
+                .queryParam("payee_name", "Arun Basil")
                 .when()
                 .get("/verify");
 
@@ -21,7 +21,7 @@ public class ApiTest extends BaseTest {
 
         response.then()
                 .statusCode(200)
-                .body("cop_account_name", equalTo("John Smith"))
+                .body("cop_account_name", equalTo("Arun Basil"))
                 .body("cop_outcome", equalTo("MATCH"))
                 .body("reason_code", equalTo("PANM"))
                 .body("reason_description", equalTo("Personal account, name matches"));
